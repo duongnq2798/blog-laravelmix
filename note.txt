@@ -1,0 +1,19 @@
+Routes: để điều hướng xem sẽ view ra view nào?
+View: Chứa những gì client nhìn thấy được (HTML)
+
+
+==============================================================4
+1. Routing
+  + Basic Routing and View
+  + Pass Request Data to Views 
+    - htmlspecialchars
+    - Folder storage -> famework -> view -> ... (chứa nội dung biên dịch từ Folder resource -> view)
+  + Route Wildcard
+    - array_key_exists
+  + Routing to Controllers
+2. Database Access
+  + Setup a Database Connection
+  + Hello Eloquent
+  + Migration 101
+  + Generate Multiple Files in a Singer Command
+  + Business Logic
