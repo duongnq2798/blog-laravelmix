@@ -14,10 +14,10 @@
   <form method="POST" action="/articles/{{ $article->id }}">
       @csrf
       {{-- Form Method Spoofing --}}
+      {{-- Các trình duyệt tại thời điểm hiện tai chỉ nhận ra và hoạt động với hai phương thức POST và PUT --}}
       @method('PUT')  
       <div class="field">
           <label class="label" for="title">Title</label>
-
           <div class="control">
           <input class="input" type="text"  name="title" id="title" value="{{ $article->title }}">
           </div>
@@ -25,7 +25,6 @@
 
       <div class="field">
           <label class="label" for="excerpt">Excerpt</label>
-
           <div class="control">
               <textarea class="textarea" name="excerpt" id="excerpt">{{ $article->excerpt}}</textarea>
           </div>
@@ -33,7 +32,6 @@
 
       <div class="field">
           <label class="label" for="body">Body</label>
-
           <div class="control">
           <textarea class="textarea" name="body" id="body">{{ $article->body}}</textarea>
           </div>

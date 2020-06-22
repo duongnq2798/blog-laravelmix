@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
+
 // use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -10,7 +12,12 @@ class ArticlesController extends Controller
     // Render a list of a resource
     public function index()
     {
-        $articles = Article::latest()->get();
+        if (request('tag')) {
+            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
+        } else {
+            $articles = Article::latest()->get();
+        }
+        // $articles = Article::latest()->get();
 
         return view('articles.index', ['articles' => $articles]);
     }
@@ -26,15 +33,21 @@ class ArticlesController extends Controller
     // Create a Article giao diện
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create', [
+            'tags' => Tag::all()
+        ]);
     }
 
 
     // Xử lý redirect sau khi create
     public function store()
     {
-        Article::create($this->validateArticle());
-        // return redirect('/articles');
+        $article = new Article(request(['title', 'excerpt', 'body']));
+        $article->user_id = 1; // auth()->id()
+        $article->save();
+
+        $article->tags()->attach(request('tags'));
+
         return redirect(route('articles.index'));
     }
 
@@ -54,13 +67,13 @@ class ArticlesController extends Controller
     }
 
 
-
     protected function validateArticle()
     {
         return request()->validate([
             'title' => 'required',
             'excerpt' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tags' => 'exists:tags,id'
         ]);
     }
 }
