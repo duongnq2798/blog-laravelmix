@@ -38,6 +38,7 @@ Released   : 20140225
                         <li class="{{Request::is('about' ) ? 'current_page_item' : ''}}"><a href="/about" accesskey="3" title="">About Us</a></li>
                         <li class="{{Request::path() === 'articles' ? 'current_page_item' : ''}}"><a href="/articles" accesskey="4" title="">Articles</a></li>
                         <li class="{{Request::path() === 'contact' ? 'current_page_item' : ''}}"><a href="#" accesskey="6" title="">Contact Us</a></li>
+                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="/login" accesskey="7" title="">Sign in</a></li>
                     </ul>
                 </div>
             </div>

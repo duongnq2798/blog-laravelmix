@@ -1,9 +1,5 @@
 const mix = require('laravel-mix')
 
-mix
-  .js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,3 +10,7 @@ mix
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix
+  .js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
