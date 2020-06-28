@@ -31,20 +31,19 @@ Route::get('/articles/create', 'ArticlesController@create');
 Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 Route::get('/articles/{article}/edit', 'ArticlesController@edit');
 Route::put('articles/{article}', 'ArticlesController@update');
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 //Email
 Route::get('/contact', 'ContactController@show');
 Route::post('/contact', 'ContactController@store');
 
-
 Route::get('payments/create', 'PaymentsController@create')->middleware('auth');
 Route::post('payments', 'PaymentsController@store')->middleware('auth');
 
-
 Auth::routes();
+
+//Demo Service Container
+
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });
